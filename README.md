@@ -17,29 +17,56 @@ Both solvers use the same dual construction and are compared by time-to-epsilon.
 
 The project uses three public datasets:
 
-- ijcnn1 — dense small-scale tabular data
-- 20NG — TF–IDF sparse text
-- real-sim — TF–IDF sparse web text
+- **ijcnn1** — dense small-scale tabular data (LIBSVM format)
+- **20NG** — TF–IDF sparse text (downloaded automatically by the code)
+- **real-sim** — TF–IDF sparse web text (LIBSVM format)
 
-Place processed datasets under:
+### Downloading ijcnn1 and real-sim (LIBSVM)
 
-data/
-    ijcnn1/
-    20ng/
-    real-sim/
+Both ijcnn1 and real-sim are available from the official LIBSVM data page:  
+<https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/>
+
+We use the LIBSVM-format files and expect them to be **unzipped** plain text
+files under `data/libsvm/`:
+
+```bash
+mkdir -p data/libsvm
+cd data/libsvm
+
+# ijcnn1: training and test sets
+wget https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/ijcnn1.tr.bz2
+wget https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/ijcnn1.t.bz2
+
+# real-sim: single split, train/test split is done in our code
+wget https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/real-sim.bz2
+
+# unzip
+bunzip2 ijcnn1.tr.bz2
+bunzip2 ijcnn1.t.bz2
+bunzip2 real-sim.bz2
+
+# rename ijcnn1.tr -> ijcnn1 to match the experiment script
+mv ijcnn1.tr ijcnn1
+```
 
 ------------------------------------------------------------
 
 ## Experiments
 
-### a9a
-python experiment.py --dataset a9a --data_root data/libsvm --eps 1e-3 --save_json results_a9a.json
+### 20ng
+`python experiment.py --dataset 20ng --data_root data/libsvm --eps 1e-3 --save_json results_20ng.json`
+
+`python plots.py --summary results_20ng.json     --outdir figs`
 
 ### ijcnn1
-python experiment.py --dataset ijcnn1 --data_root data/libsvm --eps 1e-3 --save_json results_ijcnn1.json
+`python experiment.py --dataset ijcnn1 --data_root data/libsvm --eps 1e-3 --save_json results_ijcnn1.json`
+
+`python plots.py --summary results_ijcnn1.json   --outdir figs`
 
 ### real-sim
-python experiment.py --dataset real-sim --data_root data/libsvm --eps 1e-3 --save_json results_realsim.json
+`python experiment.py --dataset real-sim --data_root data/libsvm --eps 1e-3 --save_json results_realsim.json`
+
+`python plots.py --summary results_realsim.json  --outdir figs`
 
 ------------------------------------------------------------
 
