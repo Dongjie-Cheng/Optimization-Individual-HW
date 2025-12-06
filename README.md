@@ -13,6 +13,32 @@ Both solvers use the same dual construction and are compared by time-to-epsilon.
 
 ------------------------------------------------------------
 
+## Quick Start
+
+### Clone
+
+```bash
+git clone https://github.com/Dongjie-Cheng/Optimization-Individual-HW.git
+cd Optimization-Individual-HW
+```
+
+###  Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+###  Run all experiments and plots
+```bash
+python experiment.py --dataset 20ng --data_root data/libsvm --eps 1e-3 --save_json results_20ng.json
+python plots.py --summary results_20ng.json --outdir figs
+
+python experiment.py --dataset ijcnn1 --data_root data/libsvm --eps 1e-3 --save_json results_ijcnn1.json
+python plots.py --summary results_ijcnn1.json --outdir figs
+
+python experiment.py --dataset real-sim --data_root data/libsvm --eps 1e-3 --save_json results_realsim.json
+python plots.py --summary results_realsim.json --outdir figs
+```
+
 ## Datasets
 
 The project uses three public datasets:
