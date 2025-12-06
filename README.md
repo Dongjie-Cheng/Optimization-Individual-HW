@@ -73,3 +73,9 @@ mv ijcnn1.tr ijcnn1
 ## License
 
 MIT License
+
+### Dataset licensing
+
+This repository includes copies of third-party datasets (ijcnn1 and real-sim)
+under `data/libsvm/` for convenience. All rights remain with the original
+authors and providers.
