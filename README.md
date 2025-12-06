@@ -39,7 +39,7 @@ python experiment.py --dataset real-sim --data_root data/libsvm --eps 1e-3 --sav
 python plots.py --summary results_realsim.json --outdir figs
 ```
 
-## Datasets
+## Datasets Description
 
 The project uses three public datasets:
 
@@ -77,7 +77,7 @@ mv ijcnn1.tr ijcnn1
 
 ------------------------------------------------------------
 
-## Experiments
+## Experiments Description
 
 ### 20ng
 `python experiment.py --dataset 20ng --data_root data/libsvm --eps 1e-3 --save_json results_20ng.json`
